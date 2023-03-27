@@ -10,68 +10,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Donations {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
-  name        String
-  email       String
-  phoneNumber String
-  gender      String
-  birth       String
-  country     String
-  state       String
-  city        String
-  address     String
-  cpf         String
-  rg         String
+model Transactions {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  price       String
+  product     Products @relation(fields: [productID], references: [id])
+  productID   String   @db.ObjectId
+  productName String
+  quantity    String
 
-  valuePaid     Int
-  paymentMethod String
-  paymentStatus String
-  paymentDate   String
-  createdAt     DateTime @default(now())
+  createdAt DateTime @default(now())
 
-  @@map("Donations")
+  @@map("Transactions")
 }
 
-model Students {
+model Products {
   id          String @id @default(auto()) @map("_id") @db.ObjectId
   name        String
-  email       String @unique
-  gender      String
-  birth       String
-  phoneNumber String
-  country     String
-  state       String
-  city        String
-  address     String
+  description String
+  color       String
+  details     String
+  price       String
+  quantity    String
 
-  cpf                      String
-  rg                       String
-  selfDeclaration          String
-  oldSchool                String
-  oldSchoolAdress          String
-  highSchoolGraduationDate String
-  highSchoolPeriod         String
-  metUsMethod              String
-  exStudent                String
+  updatedAt    DateTime       @default(now())
+  createdAt    DateTime       @default(now())
+  Transactions Transactions[]
 
-  valuePaid     Int
-  paymentMethod String
-  paymentStatus String
-  paymentDate   String
-  createdAt     DateTime @default(now())
-
-  @@map("Students")
+  @@map("Products")
 }
 
-model Admins {
+model Clients {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   email     String   @unique
-  username  String   @unique
-  password  String
+  address   String
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
-  @@map("Admins")
+  @@map("Clients")
 }
