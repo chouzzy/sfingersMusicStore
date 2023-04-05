@@ -1,8 +1,8 @@
 import { Router } from "express"
-import { CreateProductController } from "../modules/store/useCases/createProducts/CreateProductsController"
-import { DeleteProductController } from "../modules/store/useCases/deleteProducts/DeleteProductController"
-import { ListProductsController } from "../modules/store/useCases/listProducts/ListProductsController"
-import { UpdateProductController } from "../modules/store/useCases/updateProducts/UpdateProductController"
+import { CreateProductController } from "../modules/store/useCases/products/createProducts/CreateProductsController"
+import { DeleteProductController } from "../modules/store/useCases/products/deleteProducts/DeleteProductController"
+import { ListProductsController } from "../modules/store/useCases/products/listProducts/ListProductsController"
+import { UpdateProductController } from "../modules/store/useCases/products/updateProducts/UpdateProductController"
 
 const productsRoutes = Router()
 

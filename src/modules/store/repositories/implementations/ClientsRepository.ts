@@ -2,6 +2,8 @@ import { Prisma } from "@prisma/client";
 import { prisma } from "../../../../prisma";
 import { validationResponse } from "../../../../types";
 import { Clients } from "../../entities/Clients";
+import { CreateClientRequestProps } from "../../useCases/clients/createClients/CreateClientsController";
+import { UpdateClientRequestProps } from "../../useCases/clients/updateClients/UpdateClientController";
 import { IClientsRepository } from "../IClientsRepository";
 
 
@@ -15,13 +17,9 @@ class ClientsRepository implements IClientsRepository {
     async filterClients(
         id: Clients["id"] | undefined,
         name: Clients["name"] | undefined,
-        email: Clients["email"] | undefined,
-        address: Clients["address"] | undefined,
-        actualPage: number):
+        email: Clients["email"] | undefined
+        ):
         Promise<validationResponse | Clients[]> {
-
-
-        if (actualPage == 0) { actualPage = 1 }
 
         // Função do prisma para buscar todos os clients
 
@@ -33,7 +31,6 @@ class ClientsRepository implements IClientsRepository {
                         { id: id },
                         { name: name },
                         { email: email },
-                        { address: address },
                     ],
                 },
             })

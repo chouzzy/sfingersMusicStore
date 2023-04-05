@@ -2,8 +2,8 @@ import { Prisma } from "@prisma/client";
 import { prisma } from "../../../../prisma";
 import { validationResponse } from "../../../../types";
 import { Products } from "../../entities/Products";
-import { CreateProductRequestProps } from "../../useCases/createProducts/CreateProductsController";
-import { UpdateProductRequestProps } from "../../useCases/updateProducts/UpdateProductController";
+import { CreateProductRequestProps } from "../../useCases/products/createProducts/CreateProductsController";
+import { UpdateProductRequestProps } from "../../useCases/products/updateProducts/UpdateProductController";
 import { IProductsRepository } from "../IProductsRepository";
 
 

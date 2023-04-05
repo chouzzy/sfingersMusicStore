@@ -1,26 +1,22 @@
 import { Router } from "express"
-import { CreateAdminsController } from "../modules/registrations/useCases/createAdmins/CreateAdminController"
-import { DeleteAdminController } from "../modules/registrations/useCases/deleteAdmins/DeleteAdminController"
-import { ListAdminsController } from "../modules/registrations/useCases/listAdmins/ListAdminsController"
-import { UpdateAdminsController } from "../modules/registrations/useCases/updateAdmins/UpdateAdminsController"
-import { UpdateAdminsPasswordController } from "../modules/registrations/useCases/updateAdminsPassword/UpdateAdminsPasswordController"
+import { CreateClientsController } from "../modules/store/useCases/clients/createClients/CreateClientsController"
+import { DeleteClientController } from "../modules/store/useCases/clients/deleteClient/DeleteClientController"
+import { ListClientsController } from "../modules/store/useCases/clients/listClients/ListClientsController"
+import { UpdateClientsController } from "../modules/store/useCases/clients/updateClients/UpdateClientController"
 
-const adminsRoutes = Router()
+const clientsRoutes = Router()
 
-const listAdminsController = new ListAdminsController()
-adminsRoutes.get('/', listAdminsController.handle)
+const listClientsController = new ListClientsController()
+clientsRoutes.get('/', listClientsController.handle)
 
-const createAdminsController = new CreateAdminsController()
-adminsRoutes.post('/create', createAdminsController.handle)
+const createClientsController = new CreateClientsController()
+clientsRoutes.post('/create', createClientsController.handle)
 
-const updateAdminsController = new UpdateAdminsController()
-adminsRoutes.put('/:adminID/update', updateAdminsController.handle)
+const updateClientsController = new UpdateClientsController()
+clientsRoutes.put('/:clientID/update', updateClientsController.handle)
 
-const updateAdminsPasswordController = new UpdateAdminsPasswordController()
-adminsRoutes.put('/:adminID/updatePassword', updateAdminsPasswordController.handle)
-
-const deleteAdminsController = new DeleteAdminController()
-adminsRoutes.delete('/:adminID/delete', deleteAdminsController.handle)
+const deleteClientsController = new DeleteClientController()
+clientsRoutes.delete('/:clientID/delete', deleteClientsController.handle)
 
 
-export {adminsRoutes}
+export {clientsRoutes}

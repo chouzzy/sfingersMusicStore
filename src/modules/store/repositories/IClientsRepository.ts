@@ -1,14 +1,14 @@
 import { validationResponse } from "../../../types"
 import { Clients } from "../entities/Clients"
+import { CreateClientRequestProps } from "../useCases/clients/createClients/CreateClientsController"
+import { UpdateClientRequestProps } from "../useCases/clients/updateClients/UpdateClientController"
 
 interface IClientsRepository {
 
     filterClients(
         id: Clients["id"] | undefined,
         name: Clients["name"] | undefined,
-        email: Clients["email"] | undefined,
-        address: Clients["address"] | undefined,
-        actualPage: number
+        email: Clients["email"] | undefined
     ): Promise<Clients[] | validationResponse>
 
     createClient(clientData: CreateClientRequestProps): Promise<Clients | validationResponse>
@@ -19,4 +19,4 @@ interface IClientsRepository {
 
 }
 
-export {IClientsRepository}d
+export {IClientsRepository}

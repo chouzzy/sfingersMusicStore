@@ -1,4 +1,5 @@
 import { Router } from "express"
+import { clientsRoutes } from "./clients.routes"
 // import { clientsRoutes } from "./clients.routes"
 // import { transactionsRoutes } from "./transactions.routes"
 
@@ -13,8 +14,8 @@ const router = Router()
 // products routes
 router.use('/products', productsRoutes)
 
-//regristrations routes
-// router.use('/clients', clientsRoutes)
+//clients routes
+router.use('/clients', clientsRoutes)
 
 //users routes
 
