@@ -1,14 +1,14 @@
 import { ValidationError } from "yup";
 import { errorSchema } from "../../../../errors/ErrorSchema";
 import { validationResponse } from "../../../../types";
-import { Donations } from "../../entities/Donations";
-import { CreateDonationProps } from "./CreateDonationController";
-import { donationSchema } from "./CreateDonationSchema";
+import { Transactions } from "../../entities/Transactions";
+import { CreateTransactionProps } from "./CreateTransactionsController";
+import { transactionSchema } from "./CreateTransactionsSchema";
 
-async function checkBody(donationData:CreateDonationProps): Promise<validationResponse> {
+async function checkBody(transactionData:CreateTransactionProps): Promise<validationResponse> {
     // check body properties
     try {
-        const yupValidation = await donationSchema.validate(donationData, {
+        const yupValidation = await transactionSchema.validate(transactionData, {
             abortEarly:false,
         })
         return {isValid:true, statusCode:202}
@@ -20,15 +20,15 @@ async function checkBody(donationData:CreateDonationProps): Promise<validationRe
     return {isValid:true, statusCode:202}
 }
 
-async function ErrorValidation(createdDonation: Donations | validationResponse): Promise<validationResponse> {
+async function ErrorValidation(createdTransaction: Transactions | validationResponse): Promise<validationResponse> {
 
-    function checkIfIsAError(createdDonation: any): createdDonation is validationResponse {
-        return 'isValid' in createdDonation;
+    function checkIfIsAError(createdTransaction: any): createdTransaction is validationResponse {
+        return 'isValid' in createdTransaction;
     }
 
-    if (checkIfIsAError(createdDonation)) {
+    if (checkIfIsAError(createdTransaction)) {
         //É um erro
-        return createdDonation
+        return createdTransaction
     } else {
         //Não é um erro
         return {            

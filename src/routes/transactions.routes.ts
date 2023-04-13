@@ -1,18 +1,14 @@
 import { Router } from "express"
-import { CreateDonationController } from "../modules/donations/useCases/createDonation/CreateDonationController"
-import { DeleteDonationController } from "../modules/donations/useCases/deleteDonation/DeleteDonationController"
-import { ListDonationsController } from "../modules/donations/useCases/listDonations/ListDonationsController"
+import { CreateTransactionController } from "../modules/transactions/useCases/createTransactions/CreateTransactionsController"
+import { ListTransactionsController } from "../modules/transactions/useCases/listTransactions/ListTransactionsController"
 
-const donationsRoutes = Router()
+const transactionsRoutes = Router()
 
-const listDonationsController = new ListDonationsController()
-donationsRoutes.get('/', listDonationsController.handle)
+const listTransactionsController = new ListTransactionsController()
+transactionsRoutes.get('/', listTransactionsController.handle)
 
-const createDonationController = new CreateDonationController()
-donationsRoutes.post('/create', createDonationController.handle)
-
-const deleteDonationController = new DeleteDonationController()
-donationsRoutes.delete('/:donationID/delete', deleteDonationController.handle)
+const createTransactionController = new CreateTransactionController()
+transactionsRoutes.post('/create', createTransactionController.handle)
 
 
-export {donationsRoutes}
+export {transactionsRoutes}
