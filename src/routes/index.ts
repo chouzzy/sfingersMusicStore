@@ -5,6 +5,7 @@ import { clientsRoutes } from "./clients.routes"
 
 import { productsRoutes } from "./products.routes "
 import { transactionsRoutes } from "./transactions.routes"
+import { adminsRoutes } from "./admins.routes"
 
 
 const router = Router()
@@ -20,6 +21,10 @@ router.use('/clients', clientsRoutes)
 
 //transactions routes
 router.use('/transactions', transactionsRoutes)
+
+//admins routes
+router.use('/admins', adminsRoutes
+)
 
 //users routes
 

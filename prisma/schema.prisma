@@ -52,3 +52,11 @@ model Clients {
 
   @@map("Clients")
 }
+
+model Admins {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  username  String @unique
+  password String
+
+  @@map("Admins")
+}
